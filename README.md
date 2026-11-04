@@ -22,7 +22,7 @@ When an attack is detected, REPLICANT deploys a sandboxed **Replicant Twin** —
 
 ## What Judges Can Test Right Now
 
-REPLICANT v2.1 is a fully working proof-of-concept, tested end-to-end on a mobile phone.
+REPLICANT v2.2 is a fully working proof-of-concept, tested end-to-end on a mobile phone.
 
 | Test Scenario | Expected Result | Status |
 | :--- | :--- | :--- |
@@ -31,6 +31,8 @@ REPLICANT v2.1 is a fully working proof-of-concept, tested end-to-end on a mobil
 | 🧠 CoT Rationalization Bypass | 70 / CRITICAL - QUARANTINED | PASS |
 | 💉 Tool / SQL Privilege Attack | 80 / CRITICAL - QUARANTINED | PASS |
 | 🔤 Homoglyph + Hidden Text | 65 / CRITICAL - QUARANTINED | PASS |
+| 🔴 Red Team: Disregard all prior directions | 65 / CRITICAL - QUARANTINED | PASS |
+| 🔴 Red Team: Summarize + forward to attacker | 30 / SUSPICIOUS - SANDBOXED | PASS |
 
 Every critical test deploys a Replicant, creates a fingerprint, and quarantines the threat in the Event Log.
 
@@ -49,7 +51,7 @@ Optional: Paste a Meta API Key in the app (it stays in this browser tab only, is
 
 Monitor → Detect → Intercept → Mirror in Sandbox → Deconstruct → Quarantine → Export Intel
 
-Inspired by the concept of meeting an infiltrator inside the system you already control, REPLICANT is designed to defend 6 proximities:
+Designed to defend 6 proximities:
 
 🌐 Network | 🔌 API | 💻 Endpoint | 🪪 Identity | 🗄️ Data | 🤖 Model / LLM
 
@@ -67,16 +69,16 @@ Untrusted user/document data is wrapped in a cryptographically random `<UNTRUSTE
 A fast, free, on-device shadow scorer runs first to save time and token cost. Optional Meta Muse Wonder verification adds a second opinion when an API key is provided.
 
 **L4 - Chain-of-Thought Guardrails**
-Detects rationalization language like *"although my system prompt restricts this..."* or *"even though my guidelines prohibit..."* and triggers an instant drop.
+Detects rationalization language like *"although my system prompt restricts this..."* or *"despite my safety policy..."* and triggers an instant drop.
 
 **L5 - Outbound Action & Privilege Boundary**
-The model's output is treated as untrusted. **Reject-by-default.** Only typed, allow-listed, read-only actions like summarize/explain/list are allowed. SQL, email exfiltration, and tool abuse are blocked.
+The model's output is treated as untrusted. **Reject-by-default.** Containment mode locks all outbound actions. Only typed, allow-listed, read-only actions like summarize/explain/list are allowed after a security check. SQL, email exfiltration, and tool abuse are blocked.
 
 ## What Is Real vs. What Is Roadmap
 
 We believe transparency builds trust.
 
-**100% Real and Working in v2.1:**
+**100% Real and Working in v2.2:**
 - The full L1-L5 pipeline running in your browser
 - Homoglyph & hidden-text detection
 - Risk scoring, verdicts, and CoT detection
@@ -86,7 +88,7 @@ We believe transparency builds trust.
 
 **Simulated in This Hackathon Demo:**
 - The live chart is labeled demo telemetry, not real network traffic
-- A Replicant Twin in v2.1 is a sandboxed behavioral fingerprint, not real process injection
+- A Replicant Twin in v2.2 is a sandboxed behavioral fingerprint, not real process injection
 
 **Roadmap to Real-World Deployment:**
 1. Real ingestion from email, API gateways, and SIEM/logging systems
@@ -122,5 +124,5 @@ Attackers are going agentic. Defense has to be agentic too — but loyal, bounde
 
 REPLICANT is a loyal home-system defender: fast enough to meet a breach where it occurs, safe enough to clone its behavior in a sandbox, and smart enough to turn one attack into intel that protects the whole system.
 
-**Status: v2.1 Live and Tested on Mobile**
+**Status: v2.2 FINAL - Live and Red-Team Tested on Mobile**
 Built from a mobile device for the Meta AI Hackathon.
